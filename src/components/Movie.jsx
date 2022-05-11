@@ -3,7 +3,14 @@ import {  FaHeart, FaRegHeart } from 'react-icons/fa';
 
 
 const Movie = ({item}) => {
+  
     const [like, setLike] = useState(false);
+    const truncate = (str, num) => {
+      if (str?.length > num) {
+        return str.slice(0, num) + "...";
+      } else {
+        return str;
+      }}
   return (
 
       <div className=" w-[160px] hover:scale-110 duration-500 mx-[1.5px] sm:w-[200px] md:w-[280px] lg:w-[280px] inline-block relative cursor-pointer">
@@ -14,7 +21,7 @@ const Movie = ({item}) => {
         />
         <div className="absolute top-0 left-0 w-full h-full hover:bg-black/80 opacity-0  hover:opacity-100 text-white">
           <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center text-center h-full">
-            {item?.title}
+            {truncate(item?.title, 18)}
           </p>
           <p>
             {like ? (
