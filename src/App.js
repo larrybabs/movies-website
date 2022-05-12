@@ -1,4 +1,7 @@
 import { AuthContextProvider } from "./context/AuthContext";
+import Account from "./pages/Account";
+import Login from "./pages/Login";
+import SignUp from "./pages/SignUp";
 
 const { Routes, Route } = require("react-router-dom");
 const { default: Navbar } = require("./components/Navbar");
@@ -11,6 +14,9 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signIn" element={<Login />} />
+          <Route path="/signUp" element={<SignUp />} />
+          <Route path="/account" element={<Account />} />
         </Routes>
       </AuthContextProvider>
     </>
