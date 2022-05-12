@@ -25,7 +25,9 @@ const Row = ({ title, fetchLink, rowId }) => {
 
   return (
     <>
-      <h2 className="text-white font-bold p-4 md:text-xl ">{title}</h2>
+    <div className="flex justify-between ">
+      <h2 className="text-white font-bold p-4 md:text-xl pt-12">{title}</h2> <p className="text-gray-400 px-4 text-xs pt-12">See more</p>
+      </div>
         <div className="relative flex items-center group">
             <MdChevronLeft 
             onClick={slideLeft}
