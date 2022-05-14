@@ -29,7 +29,7 @@ const Navbar = () => {
           <Link to="/account">
             <button className="text-white p-4">Account</button>
           </Link>
-            <button onClick={handleLogout} className="bg-red-600 px-6 py-2 rounded text-white">
+            <button onClick={handleLogout} className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded text-white">
               Log out
             </button>
         </div>
@@ -39,7 +39,7 @@ const Navbar = () => {
             <button className="text-white p-4">Sign In</button>
           </Link>
           <Link to="/signup">
-            <button className="bg-red-600 px-6 py-2 rounded text-white">
+            <button className="bg-red-600 px-6 py-2 rounded hover:bg-red-700 text-white">
               Sign Up
             </button>
           </Link>
