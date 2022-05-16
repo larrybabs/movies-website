@@ -3,6 +3,7 @@ import { MdChevronLeft, MdOutlineChevronRight } from 'react-icons/md';
 import { UserAuth } from '../context/AuthContext';
 import { db } from '../Firebase';  
 import { updateDoc, doc, onSnapshot } from '@firebase/firestore';
+import {AiOutlineClose } from 'react-icons/ai'
 
 const SavedShows = () => {
     const [movies, setMovies] = useState([]);
@@ -18,10 +19,23 @@ const SavedShows = () => {
     }
 
     useEffect(() => {
-        onSnapshot (doc(db, "users", `${user?.email}`, (doc) => {
+        onSnapshot(doc(db, "users", `${user?.email}`), (doc) => {
             setMovies(doc.data()?.savedShows)
-        }))
-    }, [user?.email])
+        })
+    }, [user?.email]);
+
+    
+
+    const movieRef = doc(db,  "users", `${user?.email}`)
+    const deleteShow = async (passedID) => {
+        try{
+            const result = movies.filter((item) => item.id !== passedID)
+            await updateDoc(movieRef, {
+                savedShows: result,
+            })
+        } catch (error) {
+        console.log(error)
+    }}
 
     const truncate = (str, num) => {
         if (str?.length > num) {
@@ -33,7 +47,7 @@ const SavedShows = () => {
   return (
     <>
       <div className="flex justify-between ">
-      <h2 className="text-white font-bold p-4 md:text-xl pt-12">My shows</h2> <p className="text-gray-400 px-4 text-xs pt-12">See more</p>
+      <h2 className="text-white font-bold p-4 md:text-xl pt-12">My shows</h2>
       </div>
         <div className="relative flex items-center group">
             <MdChevronLeft 
@@ -51,6 +65,7 @@ const SavedShows = () => {
                       <p className="white-space-normal text-xs md:text-sm font-bold flex justify-center items-center text-center h-full">
                         {truncate(item?.title, 18)}
                       </p>
+                      <p onClick={()=>deleteShow(item.id)} className="absolute top-4 right-4"><AiOutlineClose /></p>
                     </div>
                   </div> 
                 ))}
