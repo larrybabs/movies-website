@@ -12,6 +12,7 @@ const Navbar = () => {
     try {
       await logOut();
       navigate('/');
+      alert("You're logged out")
     } catch (error) {
       console.log(error);
     }
