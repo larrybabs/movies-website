@@ -28,7 +28,7 @@ const Navbar = () => {
       {user?.email ? (
         <div>
           <Link to="/account">
-            <button className="text-white p-4">Account</button>
+            <button className="text-white p-4">Favorites</button>
           </Link>
             <button onClick={handleLogout} className="bg-red-600 hover:bg-red-700 px-6 py-2 rounded text-white duration-300">
               Log out
